@@ -1,0 +1,90 @@
+export const seedData = {
+  scan: { lastScan: "2m 52s", threshold: 0.68 },
+  pipeline: {
+    stages: [
+      { name: "Funding agent", total_articles: 158, passed_regex: 117, matched_vector: 77, extracted: 74, queued: 74 },
+      { name: "Buyer intent agent", harvested: 92, buyer_language: 38, signals_queued: 38, sources: { reddit: "serper", hackernews: true, linkedin: "apify", exa: true } },
+      { name: "News agent", articles: 142, passed_regex: 77, queued: 68 },
+      { name: "Watchlist agent", watchlist_built: 0, checked: 25, queued: 80 },
+      { name: "Signal queue", total: 200, funding: 74, buyer_intent: 38, news: 68, watchlist: 20 },
+      { name: "Pre-filter", in: 200, out: 143, dropped_clients_or_invalid: 57 },
+      { name: "Vector match + score", in: 143, scored: 31 },
+      { name: "Scoring + dedup", raw_signals: 31, unique_companies: 16, multi_signal: 0 },
+      { name: "Threshold (>=0.68)", unique_companies: 16, passed: 15 },
+      { name: "Final judge (Sonnet)", in: 15, kept: 13, cut: 2, competitors_flagged: 0 },
+      { name: "Query memory", queries_tracked: 35 }
+    ]
+  },
+  companyLeads: [
+    { id: 1, company: "Snackbar Studio (Rand Fishkin)", type: "intent", subtype: "exa", match: null, score: 0.75,
+      why: "Seeking video game marketing support for a launch — strong trigger for trailers, key art, and promo. Open to agencies/consultants, so a valid buyer or partner.",
+      trigger: "Upcoming video game, the snack bar at the end of the world... what I need is help finding an agency or marketing contractor who's familiar with the world of video games.", source: "buyer_intent" },
+    { id: 2, company: "DUIU", type: "news", subtype: "milestone", match: 0.36, score: 0.75,
+      why: "Funding round for a social video platform — likely ramping product marketing and brand assets at scale. Strong fit for AI-powered video/creative production.",
+      trigger: "DUIU has raised new funding to launch a social video platform designed to replace passive scrolling with participation-driven content.", source: "news" },
+    { id: 3, company: "Rezolve Ai", type: "news", subtype: "exec_hire", match: 0.34, score: 0.75,
+      why: "New CMO hire at a high-growth company signals imminent marketing/content scale-up — likely need for fast, high-volume creative.",
+      trigger: "Rezolve Ai hires Microsoft and Amazon veteran Michele Fisher as CMO to back $360M 2026 guidance.", source: "news" },
+    { id: 4, company: "Work Optional", type: "news", subtype: "rebrand", match: 0.33, score: 0.75,
+      why: "Rebrand + new HQ + leadership team typically triggers a wave of new marketing collateral, website assets, and brand video.",
+      trigger: "Work Optional Announces Rebrand, New Headquarters, Leadership Team, and a Roadmap for AI and Robotics.", source: "news" },
+    { id: 5, company: "Midsummer Studios", type: "funding", subtype: null, match: 0.36, score: 0.72,
+      why: "Game studio post-funding pivot with active development needs a marketing/promo push — fresh capital + competitive product = imminent content demand.",
+      trigger: "Midsummer Studios lands $2M lifeline after announcing plans to shut down... secured fresh funding to continue development of Burbank.", source: "funding" },
+    { id: 6, company: "Hilltop Studios", type: "intent", subtype: "exa", match: null, score: 0.72,
+      why: "Recent trailer launch + explicit pain-point callout ('frantic affair', 'challenges') around fast trailer production — direct fit for a speed/control value prop.",
+      trigger: "A neat milestone this morning: the new Curse of Resthaven trailer premiered... putting together a game trailer is always a frantic affair.", source: "buyer_intent" },
+    { id: 7, company: "Team Liquid", type: "watchlist", subtype: "3 sources", match: 1.00, score: 0.72,
+      why: "Esports org with a documented need for high-volume promo content (player spotlights, sponsor reels, clips). A championship win = a major marketing moment.",
+      trigger: "Team Liquid exacted revenge on Team Falcons with a 4-2 victory in the MLBB Professional League Philippines Season 17 Grand Finals.", source: "watchlist" }
+  ],
+  intentLeads: [
+    { id: 8, company: null, type: "intent", subtype: "exa", score: 0.88,
+      why: "Explicit stated intent from a SaaS founder seeking AI video production to cut costs and speed up launch video creation. High buyer intent, no ambiguity.",
+      intent: "Building the SaaS was the easy part. Finding a way to make a killer launch video is destroying me. Motion designers are charging insane rates. Any AI tools, templates, or workflows you use to ship high-quality product videos without breaking the bank?", source: "buyer_intent", platform: "exa" },
+    { id: 9, company: "Not provided (individual/team posting)", type: "intent", subtype: "reddit", score: 0.78,
+      why: "Company actively hiring video editors for high-volume content (Meta ads, product promos, reels). 'Hiring' suggests they may prefer human labor over a tool.",
+      intent: "I'm looking for video editors to help create videos for Meta ads, jewelry product promotions, and short-form engaging reels.", source: "buyer_intent", platform: "reddit" },
+    { id: 10, company: "Videiro.com", type: "intent", subtype: "reddit", score: 0.75,
+      why: "Clear stated intent to hire for video production on a new app/site launch — needs fast, scalable video creation.",
+      intent: "Looking for Video Editor to Create Marketing Video for new App/Site. Are you looking to hire professional video editors?", source: "buyer_intent", platform: "reddit" },
+    { id: 11, company: "Muck Rack", type: "intent", subtype: "exa", score: 0.75,
+      why: "B2B SaaS company with a stated need to convert screen recordings and technical workflows into polished marketing videos. Direct fit; real company, right vertical.",
+      intent: "I'm looking for a contract video editor to support Muck Rack's brand marketing work. Someone who can take a screen recording of an AI workflow and make it feel intuitive.", source: "buyer_intent", platform: "exa" }
+  ],
+  targetList: {
+    total: 55, proven: 0, withContacts: 0,
+    rows: [
+      { id: 101, company: "Odd Meter", why: "discovered by agent (passed scoring)", proof: "unverified" },
+      { id: 102, company: "DUIU", why: "discovered by agent (passed scoring)", proof: "unverified" },
+      { id: 103, company: "Midsummer Studios", why: "discovered by agent (passed scoring)", proof: "unverified" },
+      { id: 104, company: "Rezolve Ai", why: "discovered by agent (passed scoring)", proof: "unverified" },
+      { id: 105, company: "Work Optional", why: "discovered by agent (passed scoring)", proof: "unverified" },
+      { id: 106, company: "Corridor Digital", why: "VFX and content studio requiring tools for creative production", proof: "unverified" },
+      { id: 107, company: "Mythical Entertainment", why: "Digital entertainment company with daily video production needs", proof: "unverified" },
+      { id: 108, company: "Nebula", why: "Creator-owned streaming platform with creators needing production tools", proof: "unverified" },
+      { id: 109, company: "Tastemade", why: "Media company producing high-volume food and lifestyle video content", proof: "unverified" },
+      { id: 110, company: "MasterClass", why: "Edtech platform requiring promotional content for courses", proof: "unverified" },
+      { id: 111, company: "Kajabi", why: "Course platform whose creators need content creation tools", proof: "unverified" },
+      { id: 112, company: "Teachable", why: "Edtech platform with creators needing course and promo videos", proof: "unverified" },
+      { id: 113, company: "Gymshark", why: "Fast-growing D2C fitness apparel brand with massive social content needs", proof: "unverified" },
+      { id: 114, company: "Glossier", why: "Beauty D2C brand with heavy social and UGC video content strategy", proof: "unverified" },
+      { id: 115, company: "Liquid Death", why: "Viral beverage brand with aggressive video-first marketing approach", proof: "unverified" },
+      { id: 116, company: "100 Thieves", why: "Gaming lifestyle brand needing trailers, merch promos, and social content", proof: "unverified" },
+      { id: 117, company: "Team Liquid", why: "Esports org requiring promo videos, player spotlights, and sponsor content", proof: "unverified" }
+    ]
+  },
+  competitors: [
+    { name: "Google Flow", desc: "AI Creative Studio for Video, Images & Custom", site: "labs.google/fx/en/tools/flow" },
+    { name: "Synclip", desc: "AI Video & Image Creation Platform", site: "synclip.ai" },
+    { name: "Createfy", desc: "Direct your own studio", site: "createfy.ai" },
+    { name: "Adobe Firefly", desc: "Create AI animation instantly", site: "adobe.com/products/firefly/features" },
+    { name: "mstudio", desc: "AI Storyboard Generator & AI Movie Maker", site: "mstudio.ai" },
+    { name: "Frameo.AI", desc: "Turn Ideas into Cinematic AI Videos", site: "frameo.ai" },
+    { name: "LTX Studio", desc: "The Creative Studio for AI Video Production", site: "ltx.io/studio" },
+    { name: "Xainflow", desc: "AI Agents for Campaign Production", site: "xainflow.com" },
+    { name: "Hypernatural", desc: "AI videos, from prompt to post in minutes", site: "hypernatural.ai" },
+    { name: "Mootion", desc: "AI video and animation", site: "mootion.com" },
+    { name: "Flow Studio", desc: "Autodesk Flow Studio", site: "adsknews.autodesk.com/en/news/autodesk-flow" }
+  ]
+};
