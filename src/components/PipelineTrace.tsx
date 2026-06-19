@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react"
 import { ChevronDown, ChevronRight, Activity } from "lucide-react"
 import { SignalFunnel } from "./SignalFunnel"

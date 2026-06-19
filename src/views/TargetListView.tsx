@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react"
 import { seedData } from "../data/seed"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../components/ui/table"

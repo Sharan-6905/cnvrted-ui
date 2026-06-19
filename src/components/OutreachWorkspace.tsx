@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 import { Send, Users, MailOpen, MousePointerClick, Calendar, Activity, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';

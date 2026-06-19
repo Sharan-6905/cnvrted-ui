@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react"
 import { LayoutDashboard, Target, Users, ListFilter, Settings, Activity, Loader2, Menu } from "lucide-react"
 import { cn } from "../lib/utils"

@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 import { Database, ArrowRightLeft, CheckCircle2, AlertCircle, Clock } from 'lucide-react';
 import { motion } from 'framer-motion';
